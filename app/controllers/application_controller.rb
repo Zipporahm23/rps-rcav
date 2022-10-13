@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
-  layout(false)
+  layout("wrapper.html.erb")
 
   # Add your actions below this line
   # ================================
-def homepage
-  render({ :template => "game_templates/rules.html.erb"})
-end
+
+  def homepage
+  render({ :template => "game_templates/rules.html.erb", :layout => "wrapper.html.erb"})
+  end
 
   def play_rock
-# redirect_to("https://www.wikipedia.org")
+
    index = rand(3)  
 
    moves = ["rock", "paper", "scissors"]
@@ -23,7 +24,7 @@ end
     @outcome = "We won!"  
  end
 
-    render({:template => "game_templates/user_rock.html.erb"})
+    render({:template => "game_templates/user_rock.html.erb", :layout => "wrapper.html.erb"})
   end
 
 
@@ -41,7 +42,7 @@ end
       elsif @comp_move == "scissors"
         @outcome = "We lost!"
       end
-    render({:template => "game_templates/user_paper.html.erb"})
+    render({:template => "game_templates/user_paper.html.erb", :layout => "wrapper.html.erb"})
 
   end
 
@@ -59,6 +60,6 @@ end
       elsif @comp_move == "scissors"
         @outcome = "We tied!"
       end
-      render({:template => "game_templates/user_scissors.html.erb"})
+      render({:template => "game_templates/user_scissors.html.erb", :layout => "wrapper.html.erb"})
     end
 end
